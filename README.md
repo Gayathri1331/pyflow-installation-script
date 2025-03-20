@@ -49,8 +49,9 @@ unset __conda_setup
 # <<< conda initialize <<<
 ```
 
-  - Locate the **conda initialization block** and either comment it out by adding `#` before each line or remove it completely by deleting the lines.
+  - Locate the conda initialization block and either comment it out by adding `#` before each line or remove it completely by deleting the lines.
   To apply the changes, reload `.bashrc`:
+
 ```bash
 source ~/.bashrc
 ```
@@ -61,14 +62,14 @@ source ~/.bashrc
 ### **3. Conflicts with `.local` Directory**
 - If you have packages stored in `.local`, renaming it may help resolve conflicts:
   
-  ```bash
-  mv ~/.local ~/.local-off  # Rename .local to .local-off
-  ```
+```bash
+mv ~/.local ~/.local-off  # Rename .local to .local-off
+ ```
 
 ### **4. Resolve Conda Version Conflicts**
 - Running a cleanup command can remove conflicting dependencies:
   
-  ```bash
-  conda clean --all
-  ```
+```bash
+conda clean --all
+```
   If issues persist, please contact the **Research Computing (RC) team** for further assistance.

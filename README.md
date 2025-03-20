@@ -30,12 +30,30 @@ source pyflow_env.sh
 If you encounter issues during installation, check for the following:
 
 ### **1. Conda Initialization Conflicts**
-- If you have a `conda init` statement in your `.bashrc`, remove it:
+- If you have a `conda init` statement in your `.bashrc`, it may cause conflicts. It typically looks like this:
   
-  ```bash
-  nano ~/.bashrc  # Remove or comment out 'conda init' lines
-  source ~/.bashrc
-  ```
+```bash
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/shared/centos7/anaconda3/2022.05/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/shared/centos7/anaconda3/2022.05/etc/profile.d/conda.sh" ]; then
+        . "/shared/centos7/anaconda3/2022.05/etc/profile.d/conda.sh"
+    else
+        export PATH="/shared/centos7/anaconda3/2022.05/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+```
+
+  - Locate the **conda initialization block** and either comment it out by adding `#` before each line or remove it completely by deleting the lines.
+  To apply the changes, reload `.bashrc`:
+```bash
+source ~/.bashrc
+```
 
 ### **2. Existing Conda Environment Conflicts**
 - If you're trying to install PyFlow in an existing conda environment, it may cause issues. Instead, create a fresh environment.
